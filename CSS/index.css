@@ -257,6 +257,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  background: #dcdcdc;
   height: 500px;
   position: relative;
   overflow: hidden;
