@@ -2,26 +2,34 @@ class Carousel {
   constructor(carousel) {
     this.carousel = carousel;
     this.previousBtn = document.querySelector('.left-button');
+    this.previousBtn.style.zIndex = 10;
     this.nextBtn = document.querySelector('.right-button');
+    this.previousBtn.style.zIndex = 10;
     this.imgRef = {
       img: document.querySelectorAll('.carousel img')
     };
+
     this.index = 0;
     this.imgRef.img[this.index].style.display = 'block';
     this.nextBtn.addEventListener('click', () => this.next());
     this.previousBtn.addEventListener('click', () => this.previous());
   }
+
   next() {
     this.index++;
     if (this.index >= this.imgRef.img.length) {
       this.index = 0;
     }
+    TweenMax.from(this.imgRef.img, 0.5, {x: '500px', opacity: '0'});
+    TweenMax.to(this.imgRef.img, 0.5, {x: '0px', opacity: '1'});
     this.imgRef.img.forEach(img => (img.style.display = 'none'));
     this.imgRef.img[this.index].style.display = 'block';
   }
 
   previous() {
     this.index--;
+    TweenMax.from(this.imgRef.img, 0.5, {x: '-500px', opacity: '0'});
+    TweenMax.to(this.imgRef.img, 0.5, {x: '0px', opacity: '1'});
     if (this.index < 0) {
       this.index = this.imgRef.img.length - 1;
     }
