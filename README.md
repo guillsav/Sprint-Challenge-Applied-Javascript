@@ -36,7 +36,11 @@ The DOM is a Javascript object representation of the HTML code of the webpage. I
 
 2. What is an event?
 
+An Event is an interaction with the DOM on a web page. It is triggered by an event listener.
+
 3. What is an event listener?
+
+An event listener is a function that is waiting for either an input or process to start or finish running to trigger an event on the page.
 
 4. Why would we convert a NodeList into an Array?
 
