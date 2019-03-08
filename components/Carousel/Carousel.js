@@ -1,15 +1,32 @@
 class Carousel {
   constructor(carousel) {
     this.carousel = carousel;
-    this.leftButton = document.querySelector('.left-button');
-    this.rightButton = document.querySelector('.right-button');
-    this.img = document.querySelectorAll('.carousel img');
-    this.img.forEach((img, index) => {
-      img.setAttribute('data-index', `${index}`);
-      if (img.dataset.index === '0') {
-        return (img.style.display = 'inline-block');
-      }
-    });
+    this.previousBtn = document.querySelector('.left-button');
+    this.nextBtn = document.querySelector('.right-button');
+    this.imgRef = {
+      img: document.querySelectorAll('.carousel img')
+    };
+    this.index = 0;
+    this.imgRef.img[this.index].style.display = 'block';
+    this.nextBtn.addEventListener('click', () => this.next());
+    this.previousBtn.addEventListener('click', () => this.previous());
+  }
+  next() {
+    this.index++;
+    if (this.index >= this.imgRef.img.length) {
+      this.index = 0;
+    }
+    this.imgRef.img.forEach(img => (img.style.display = 'none'));
+    this.imgRef.img[this.index].style.display = 'block';
+  }
+
+  previous() {
+    this.index--;
+    if (this.index < 0) {
+      this.index = this.imgRef.img.length - 1;
+    }
+    this.imgRef.img.forEach(img => (img.style.display = 'none'));
+    this.imgRef.img[this.index].style.display = 'block';
   }
 }
 
